@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 /**
- * ¥æ©`¥¶©`Çéˆó Entity
+ * ï¿½ï¿½`ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½ Entity
  */
 @Entity
 @Data
@@ -29,35 +29,35 @@ public class User implements Serializable {
   @Id
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  public Long id;
   /**
-   * ÃûÇ°
+   * ï¿½ï¿½Ç°
    */
   @Column(name = "name")
-  private String name;
+  public String name;
   /**
-   * ×¡Ëù
+   * ×¡ï¿½ï¿½
    */
   @Column(name = "address")
-  private String address;
+  public String address;
   /**
-   * ëŠÔ’·¬ºÅ
+   * ï¿½Ô’ï¿½ï¿½ï¿½ï¿½
    */
   @Column(name = "phone")
-  private String phone;
+  public String phone;
   /**
-   * ¸üÐÂÈÕ•r
+   * ï¿½ï¿½ï¿½ï¿½ï¿½Õ•r
    */
   @Column(name = "update_date")
-  private Date updateDate;
+  public Date updateDate;
   /**
-   * µÇåhÈÕ•r
+   * ï¿½ï¿½ï¿½hï¿½Õ•r
    */
   @Column(name = "create_date")
-  private Date createDate;
+  public Date createDate;
   /**
-   * Ï÷³ýÈÕ•r
+   * ï¿½ï¿½ï¿½ï¿½ï¿½Õ•r
    */
   @Column(name = "delete_date")
-  private Date deleteDate;
+  public Date deleteDate;
 }
