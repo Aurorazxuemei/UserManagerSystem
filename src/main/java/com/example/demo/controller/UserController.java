@@ -8,25 +8,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.example.demo.dto.UserUpdateRequest;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 
 /**
- * ¥æ©`¥¶©`Çéˆó Controller
+ * ï¿½ï¿½`ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½ Controller
  */
 @Controller
 public class UserController {
 
   /**
-   * ¥æ©`¥¶©`Çéˆó Service
+   * ï¿½ï¿½`ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½ Service
    */
   @Autowired
   private UserService userService;
 
   /**
-   * ¥æ©`¥¶©`ÇéˆóÒ»ÓE»­Ãæ¤ò±íÊ¾
+   * ï¿½ï¿½`ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½Ò»ï¿½Eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
    * @param model Model
-   * @return ¥æ©`¥¶©`ÇéˆóÒ»ÓE»­Ãæ
+   * @return ï¿½ï¿½`ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½Ò»ï¿½Eï¿½ï¿½ï¿½ï¿½
    */
   @GetMapping(value = "/user/list")
   public String displayList(Model model) {
@@ -36,9 +37,9 @@ public class UserController {
   }
 
   /**
-   * ¥æ©`¥¶©`ĞÂÒµÇåh»­Ãæ¤ò±íÊ¾
+   * ï¿½ï¿½`ï¿½ï¿½ï¿½`ï¿½ï¿½Òï¿½ï¿½ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
    * @param model Model
-   * @return ¥æ©`¥¶©`ÇéˆóÒ»ÓE»­Ãæ
+   * @return ï¿½ï¿½`ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½Ò»ï¿½Eï¿½ï¿½ï¿½ï¿½
    */
   @GetMapping(value = "/user/add")
   public String displayAdd(Model model) {
@@ -46,10 +47,10 @@ public class UserController {
   }
 
   /**
-   * ¥æ©`¥¶©`ÇéˆóÔ”¼š»­Ãæ¤ò±íÊ¾
-   * @param id ±íÊ¾¤¹¤ë¥æ©`¥¶©`ID
+   * ï¿½ï¿½`ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½Ô”ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+   * @param id ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½`ID
    * @param model Model
-   * @return ¥æ©`¥¶©`ÇéˆóÔ”¼š»­Ãæ
+   * @return ï¿½ï¿½`ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½Ô”ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
    */
   @GetMapping("/user/{id}")
   public String displayView(@PathVariable Long id, Model model) {
@@ -62,10 +63,22 @@ public class UserController {
     userService.deleteById(id);
     return "redirect:/user/list";
   }
+  /**
+   * ãƒ¦ãƒ¼ã‚¶ãƒ¼ç·¨é›†ç”»é¢ã‚’è¡¨ç¤º
+   * @param id è¡¨ç¤ºã™ã‚‹ãƒ¦ãƒ¼ã‚¶ãƒ¼ID
+   * @param model Model
+   * @return ãƒ¦ãƒ¼ã‚¶ãƒ¼ç·¨é›†ç”»é¢
+   */
   @GetMapping("/user/{id}/edit")
   public String displayEdit(@PathVariable Long id, Model model) {
 	  User user = userService.findById(id);
-    return "/user/{id}/edit";
+	    UserUpdateRequest userUpdateRequest = new UserUpdateRequest();
+	    userUpdateRequest.setId(user.getId());
+	    userUpdateRequest.setName(user.getName());
+	    userUpdateRequest.setPhone(user.getPhone());
+	    userUpdateRequest.setAddress(user.getAddress());
+	    model.addAttribute("userUpdateRequest", userUpdateRequest);
+	    return "user/edit";
   }
 
 }

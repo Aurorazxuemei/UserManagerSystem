@@ -29,35 +29,37 @@ public class User implements Serializable {
   @Id
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  public Long id;
+  private Long id;
   /**
    * ��ǰ
    */
   @Column(name = "name")
-  public String name;
+  private String name;
   /**
    * ס��
    */
   @Column(name = "address")
-  public String address;
+  private String address;
   /**
    * �Ԓ����
    */
   @Column(name = "phone")
-  public String phone;
+  private String phone;
   /**
    * �����Օr
    */
   @Column(name = "update_date")
-  public Date updateDate;
+  private Date updateDate;
   /**
    * ���h�Օr
    */
   @Column(name = "create_date")
-  public Date createDate;
+  private Date createDate;
   /**
    * �����Օr
    */
   @Column(name = "delete_date")
-  public Date deleteDate;
+  private Date deleteDate;
+
+  
 }
