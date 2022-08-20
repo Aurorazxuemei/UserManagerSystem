@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/head :: head_fragment(title = 'ユーザー情報一覧', scripts = ~{::script}, links = ~{::link})"></head>
+<body>
+  <div class="container">
+    <h1>adminー情報一覧</h1>
+    <div class="float-end">
+      <a th:href="@{/admin/add}" class="btn btn-primary">新規登録はこちら</a>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>名前</th>
+          <th>パスワード</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="admin : ${adminlist}" th:object="${admin}" class="align-middle">
+          <td th:text="*{id}"></td>
+          <td th:text="*{name}"></td>
+          <td th:text="*{password}"></td>
+          <td><a th:href="@{/admin/{id}(id=*{id})}" class="btn btn-secondary">詳細</a></td>
+          <td><a th:href="@{/admin/{id}/delete(id=*{id})}" class="btn btn-secondary">削除</a></td>
+          <td><a th:href="@{/admin/{id}/edit(id=*{id})}" class="btn btn-secondary">編集</a></td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
