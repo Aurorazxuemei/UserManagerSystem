@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 /**
- * ��`���`��� Entity
+ * ユーザー情報 Entity
  */
 @Entity
 @Data
@@ -31,35 +31,33 @@ public class User implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   /**
-   * ��ǰ
+   * 名前
    */
   @Column(name = "name")
   private String name;
   /**
-   * ס��
+   * 住所
    */
   @Column(name = "address")
   private String address;
   /**
-   * �Ԓ����
+   * 電話番号
    */
   @Column(name = "phone")
   private String phone;
   /**
-   * �����Օr
+   * 更新日時
    */
   @Column(name = "update_date")
   private Date updateDate;
   /**
-   * ���h�Օr
+   * 登録日時
    */
   @Column(name = "create_date")
   private Date createDate;
   /**
-   * �����Օr
+   * 削除日時
    */
   @Column(name = "delete_date")
   private Date deleteDate;
-
-  
 }

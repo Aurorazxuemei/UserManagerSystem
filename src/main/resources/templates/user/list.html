@@ -30,8 +30,7 @@
           <td th:text="${#dates.format(user.createDate, 'yyyy/MM/dd')}"></td>
           <td th:text="${#dates.format(user.deleteDate, 'yyyy/MM/dd')}"></td>
           <td><a th:href="@{/user/{id}(id=*{id})}" class="btn btn-secondary">詳細</a></td>
-          <td><a th:href="@{/user/{id}/delete(id=*{id})}" class="btn btn-secondary">削除</a></td>
-          <td><a th:href="@{/user/{id}/edit(id=*{id})}" class="btn btn-secondary">編集</a></td>
+         
           
         </tr>
       </tbody>
