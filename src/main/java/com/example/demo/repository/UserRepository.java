@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entity.User;
 
 /**
- * ¥æ©`¥¶©`Çéˆó Repository
+ * ãƒ¦ãƒ¼ã‚¶ãƒ¼æƒ…å ± Repository
  */
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {}
