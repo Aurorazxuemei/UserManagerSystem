@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title>Hello</title>
-    <meta charset="utf-8" />
-  </head>
-  <body>
-    <h1>第一章 Spring Boot＋Thymeleaf で”Hello World”を作成する</h1>
-    <h2><span th:text="${message}"></span></h2>
-  </body>
+<head th:replace="common/head :: head_fragment(title = 'USER登録画面', scripts = ~{::script}, links = ~{::link})">
+<meta charset="UTF-8">
+</head>
+<body>
+<h1>USER登録画面</h1>
+<form th:action="@{/login}" th:object="${admin111}" th:method="post">
+<input type="text" th:field="*{name}" placeholder="アカウントを入力してください"/><br/>
+<input type="password" th:field="*{password}" placeholder="パスワードを入力してください"/><br/>
+<button type="submit" class="btn btn-outline-success btn-block">登録</button>
+</form>
+<div>
+<label class="text-danger" th:text="${loginError}"></label>
+</div>
+</body>
 </html>
