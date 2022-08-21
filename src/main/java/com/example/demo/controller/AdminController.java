@@ -1,13 +1,22 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.demo.dto.UserRequest;
+import com.example.demo.dto.UserUpdateRequest;
 import com.example.demo.entity.Admin;
 import com.example.demo.service.AdminService;
 
@@ -42,21 +51,30 @@ public class AdminController {
    */
   @GetMapping(value = "/admin/add")
   public String displayAdd(Model model) {
+	  Admin admin = new Admin();
+    model.addAttribute("admin222", admin);
     return "admin/add";
   }
+  
+  @RequestMapping(value = "/admin/create", method = RequestMethod.POST)
+  public String create(Admin admin, Model model) {
 
+    // ユーザー情報の登録
+    adminService.create(admin);
+    return "redirect:/admin/list";
+  }
   /**
    * ��`���`���Ԕ��������ʾ
    * @param id ��ʾ�����`���`ID
    * @param model Model
    * @return ��`���`���Ԕ������
    */
-//  @GetMapping("/user/{id}")
-//  public String displayView(@PathVariable Long id, Model model) {
-//	  Admin user = adminService.findById(id);
-//    model.addAttribute("userData", user);
-//    return "user/view";
-//  }
+  @GetMapping("/admin/{id}")
+  public String displayView(@PathVariable Long id, Model model) {
+	  Admin admin = adminService.findById(id);
+    model.addAttribute("admin", admin);
+    return "admin/view";
+  }
 //  @GetMapping("/user/{id}/delete")
 //  public String deleteUser(@PathVariable Long id, Model model) {
 //	  adminService.deleteById(id);
@@ -68,16 +86,26 @@ public class AdminController {
    * @param model Model
    * @return ユーザー編集画面
    */
- // @GetMapping("/user/{id}/edit")
-//  public String displayEdit(@PathVariable Long id, Model model) {
-//	  Admin user = adminService.findById(id);
-//	    AdminUpdateRequest userUpdateRequest = new AdminUpdateRequest();
-//	    userUpdateRequest.setId(user.getId());
-//	    userUpdateRequest.setName(user.getName());
-//	    userUpdateRequest.setPhone(user.getPhone());
-//	    userUpdateRequest.setAddress(user.getAddress());
-//	    model.addAttribute("userUpdateRequest", userUpdateRequest);
-//	    return "user/edit";
-//  }
-
+  @GetMapping("/admin/{id}/edit")
+  public String displayEdit(@PathVariable Long id, Model model) {
+	  Admin admin = adminService.findById(id);
+	
+	    model.addAttribute("admin333", admin);
+	    return "admin/edit";
+  }
+  
+  
+  
+  @RequestMapping(value = "/admin/update", method = RequestMethod.POST)
+  public String update( Admin admin, Model model) {
+	 
+    // ユーザー情報の更新
+    adminService.update(admin);
+    //"redirect:/admin/2"
+//    String s = "redirect:/admin/";
+//    s += admin.getId();
+//    return s;
+    
+    return String.format("redirect:/admin/%d", admin.getId());
+  }
 }
