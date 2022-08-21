@@ -68,7 +68,7 @@ public class AdminController {
    * @param id ��ʾ�����`���`ID
    * @param model Model
    * @return ��`���`���Ԕ������
-   */
+   *///master
   @GetMapping("/admin/{id}")
   public String displayView(@PathVariable Long id, Model model) {
 	  Admin admin = adminService.findById(id);
