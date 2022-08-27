@@ -48,12 +48,11 @@ public class HelloWorldController {
 	    }
     	
     	if(isSussed) {
-    		
+    		return "redirect:/user/list";
     	}else {
     		model.addAttribute("admin111", admin);
     		model.addAttribute("loginError", "登録に失敗しました！");
     		return "index";
     	}
-    	return "";
     }
 }
