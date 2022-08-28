@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -51,6 +52,9 @@ public class AdminController {
    */
   @GetMapping(value = "/admin/add")
   public String displayAdd(Model model) {
+	  BCryptPasswordEncoder encoder =new BCryptPasswordEncoder();
+	  String ss = encoder.encode("ffffff".trim());
+	  
 	  Admin admin = new Admin();
     model.addAttribute("admin222", admin);
     return "admin/add";

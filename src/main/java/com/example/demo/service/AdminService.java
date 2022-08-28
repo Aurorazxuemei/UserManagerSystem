@@ -39,6 +39,21 @@ public class AdminService {
   public Admin findById(Long id) {
     return adminRepository.findById(id).get();
   }
+  
+  public Admin findByName(String name) {
+	  List<Admin> adminlist = searchAll();
+  	
+  	for ( Admin adm :  adminlist) {
+  		
+  		
+  		if(name.equals(adm.getUsername())) {
+  			return adm;
+  		}
+	       
+	    }
+	    return null;
+ }
+  
   public void deleteById(Long id) {
 	  adminRepository.deleteById(id);
   

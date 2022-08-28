@@ -39,6 +39,7 @@ public class UserController {
    */
   @GetMapping(value = "/user/list")
   public String displayList(Model model) {
+	  
     List<User> userlist = userService.searchAll();
     model.addAttribute("userlist", userlist);
     return "user/list";
@@ -52,8 +53,8 @@ public class UserController {
   @GetMapping(value = "/user/add")
   public String displayAdd(Model model) {
 	  UserRequest userRequest = new UserRequest();
-	  userRequest.setName("xiaoxie");
-	  userRequest.setAddress("kaifaqu");
+	  userRequest.setName(null);
+	  userRequest.setAddress(null);
     model.addAttribute("userRequest", userRequest);
     return "user/add";
   }
@@ -105,7 +106,7 @@ public class UserController {
     userUpdateRequest.setId(user.getId());
     userUpdateRequest.setName(user.getName());
     userUpdateRequest.setPhone(user.getPhone());
-    userUpdateRequest.setAddress(user.getAddress());
+    userUpdateRequest.setAddress(user.getAddress()); 
     model.addAttribute("userUpdateRequest", userUpdateRequest);
     return "user/edit";
   }
