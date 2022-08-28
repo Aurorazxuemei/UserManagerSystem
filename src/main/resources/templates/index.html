@@ -6,7 +6,7 @@
 <body>
 <h1>USER登録画面</h1>
 <form th:action="@{/login}" th:object="${admin111}" th:method="post">
-<input type="text" th:field="*{name}" placeholder="アカウントを入力してください"/><br/>
+<input type="text" th:field="*{username}" placeholder="アカウントを入力してください"/><br/>
 <input type="password" th:field="*{password}" placeholder="パスワードを入力してください"/><br/>
 <button type="submit" class="btn btn-outline-success btn-block">登録</button>
 </form>

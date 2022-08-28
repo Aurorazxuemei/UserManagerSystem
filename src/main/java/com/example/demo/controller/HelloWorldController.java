@@ -28,7 +28,7 @@ public class HelloWorldController {
     
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login( Admin admin, Model model) {
-    	String name = admin.getName();
+    	String name = admin.getUsername();
 		String password = admin.getPassword();
 		
     	List<Admin> adminlist = adminService.searchAll();
@@ -37,7 +37,7 @@ public class HelloWorldController {
     	
     	for ( Admin adm :  adminlist) {
     		
-    		String name1 = adm.getName();
+    		String name1 = adm.getUsername();
     		String password1 = adm.getPassword();
     		
     		if(name.equals(name1) && password.equals(password1)) {
